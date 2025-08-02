@@ -1,0 +1,58 @@
+# Snapcraft Recipe for VirusTotal CLI
+#
+# Copyright 2025 林博仁(Buo-ren Lin) <buo.ren.lin@gmail.com>
+# SPDX-License-Identifier: Apache-2.0
+name: vt-cli
+title: VirusTotal CLI
+summary: Do everything you'd normally do using VirusTotal's web page with this tool.
+description: |
+  This is the VirusTotal Command Line Interface.
+base: core24
+adopt-info: vt-cli
+grade: devel
+confinement: strict
+
+apps:
+  vt-cli: &vt-app-defs
+    command: bin/vt
+    plugs:
+      - home
+      - removable-media
+      - network
+
+  vt: *vt-app-defs
+
+parts:
+  vt-cli:
+    plugin: go
+    source: https://github.com/VirusTotal/vt-cli.git
+    source-subdir: .
+    build-snaps:
+      - go/1.24/stable
+    override-pull: |
+      if ! craftctl default; then
+        printf \
+          'Error: Unable to run the default logic of the pull step.\n' \
+          1>&2
+        exit 2
+      fi
+
+      if ! part_version="$(
+        git -C "${CRAFT_PART_SRC}" describe \
+          --always \
+          --dirty \
+          --match='*.*.*' \
+          --tags
+        )"; then
+        printf \
+          'Error: Unable to describe the version of the part.\n' \
+          1>&2
+        exit 2
+      fi
+
+      if ! craftctl set version="${part_version}"; then
+        printf \
+          'Error: Unable to set the version of the snap.\n' \
+          1>&2
+        exit 2
+      fi
