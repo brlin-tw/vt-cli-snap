@@ -29,6 +29,7 @@ confinement: strict
 apps:
   vt-cli: &vt-app-defs
     command: bin/vt
+    completer: etc/bash_completion.d/vt
     plugs:
       - home
       - removable-media
@@ -95,3 +96,4 @@ parts:
         'Info: The version of the snap is set to %s.\n' \
         "${snap_version}" \
         1>&2
+    override-build: "${CRAFT_PROJECT_DIR}/snap/local/override-build.sh"
