@@ -49,6 +49,10 @@ parts:
           1>&2
         exit 2
       fi
+      printf \
+        'Info: The version of the main part is determined as %s.\n' \
+        "${part_version}" \
+        1>&2
 
       if ! craftctl set version="${part_version}"; then
         printf \
@@ -56,3 +60,7 @@ parts:
           1>&2
         exit 2
       fi
+      printf \
+        'Info: The version of the snap is set to %s.\n' \
+        "${snap_version}" \
+        1>&2
