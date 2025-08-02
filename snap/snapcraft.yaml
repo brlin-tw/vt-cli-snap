@@ -6,7 +6,21 @@ name: vt-cli
 title: VirusTotal CLI
 summary: Do everything you'd normally do using VirusTotal's web page with this tool.
 description: |
-  This is the VirusTotal Command Line Interface.
+  Welcome to the VirusTotal CLI, a tool designed for those who love both VirusTotal and command-line interfaces. With this tool you can do everything you'd normally do using VirusTotal's web page, including:
+
+  * Retrieve information about a file, URL, domain name, IP address, etc.
+  * Search for files and URLs using VirusTotal Intelligence query syntax.
+  * Download files.
+  * Manage your LiveHunt YARA rules.
+  * Launch Retrohunt jobs and get their results.
+
+  And much more: https://virustotal.github.io/vt-cli/doc/vt.html
+
+  **Snap maintainer notice:**
+
+  This is NOT an official distribution of the VirusTotal CLI, refer to the snap's own issue tracker for support:
+
+  https://gitlab.com/brlin/vt-cli-snap/-/issues
 base: core24
 adopt-info: vt-cli
 grade: devel
