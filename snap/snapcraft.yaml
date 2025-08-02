@@ -45,7 +45,7 @@ parts:
           --tags
         )"; then
         printf \
-          'Error: Unable to describe the version of the part.\n' \
+          'Error: Unable to describe the version of the main part.\n' \
           1>&2
         exit 2
       fi
