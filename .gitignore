@@ -94,3 +94,6 @@
 
 # Don't track built snaps
 *.snap
+
+# Don't track Snapcraft remote-build artifacts
+/snapcraft-*.txt
