@@ -7,6 +7,13 @@ Provides easy-to-install snap package for [the VirusTotal Command Line Interface
 
 \#snap-packaging
 
+## References
+
+The following materials are referenced during the development of this project:
+
+* [VirusTotal/vt-cli: VirusTotal Command Line Interface](https://github.com/VirusTotal/vt-cli)  
+  The project of the packaged software.
+
 ## Licensing
 
 Unless otherwise noted([comment headers](https://reuse.software/spec-3.3/#comment-headers)/[REUSE.toml](https://reuse.software/spec-3.3/#reusetoml)), this product is licensed under [the 2.0 version of the Apache License license](https://www.apache.org/licenses/LICENSE-2.0), or any of its more recent versions of your preference.
