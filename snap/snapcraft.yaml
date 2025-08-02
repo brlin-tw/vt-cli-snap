@@ -23,7 +23,7 @@ description: |
   https://gitlab.com/brlin/vt-cli-snap/-/issues
 base: core24
 adopt-info: vt-cli
-grade: devel
+grade: stable
 confinement: strict
 
 apps:
