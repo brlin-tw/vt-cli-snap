@@ -54,7 +54,24 @@ parts:
         "${part_version}" \
         1>&2
 
-      if ! craftctl set version="${part_version}"; then
+      if ! packaging_version="$(
+        git -C "${CRAFT_PROJECT_DIR}" describe \
+          --always \
+          --dirty \
+          --abbrev=3
+        )"; then
+        printf \
+          'Error: Unable to describe the packaging version.\n' \
+          1>&2
+        exit 2
+      fi
+      printf \
+        'Info: The packaging version is determined as %s.\n' \
+        "${packaging_version}" \
+        1>&2
+
+      snap_version="${part_version}+s${packaging_version}"
+      if ! craftctl set version="${snap_version}"; then
         printf \
           'Error: Unable to set the version of the snap.\n' \
           1>&2
