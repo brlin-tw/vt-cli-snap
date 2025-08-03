@@ -46,7 +46,7 @@ if test -e "${vt_config_file_native}" \
     printf \
         "INFO: Migrating the native configuration file to the snap's data directory...\\n" \
         1>&2
-    if ! cp -a "${vt_config_file_native}" "${vt_config_file_snap}"; then
+    if ! cp -av "${vt_config_file_native}" "${vt_config_file_snap}"; then
         printf \
             "Error: Unable to migrate the native configuration file to the snap's data directory.\\n" \
             1>&2
