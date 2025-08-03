@@ -36,20 +36,20 @@ if ! {
         sleep 10
         touch "${marker_file}"
         printf '\n--------------------------------\n\n' 1>&2
+    fi
 
-        vt_config_file_native="${SNAP_REAL_HOME}/.vt.toml"
-        vt_config_file_snap="${SNAP_USER_DATA}/.vt.toml"
-        if test -e "${vt_config_file_native}" \
-            && ! test -e "${vt_config_file_snap}"; then
+    vt_config_file_native="${SNAP_REAL_HOME}/.vt.toml"
+    vt_config_file_snap="${SNAP_USER_DATA}/.vt.toml"
+    if test -e "${vt_config_file_native}" \
+        && ! test -e "${vt_config_file_snap}"; then
+        printf \
+            "INFO: Migrating the native configuration file to the snap's data directory...\\n" \
+            1>&2
+        if ! cp -a "${vt_config_file_native}" "${vt_config_file_snap}"; then
             printf \
-                "INFO: Migrating the native configuration file to the snap's data directory...\\n" \
+                "Error: Unable to migrate the native configuration file to the snap's data directory.\\n" \
                 1>&2
-            if ! cp -a "${vt_config_file_native}" "${vt_config_file_snap}"; then
-                printf \
-                    "Error: Unable to migrate the native configuration file to the snap's data directory.\\n" \
-                    1>&2
-                exit 2
-            fi
+            exit 2
         fi
     fi
 fi
