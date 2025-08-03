@@ -30,6 +30,8 @@ if test "${#}" -ge 2 \
     exec "${@}"
 fi
 
+flag_output_separation_required=false
+
 # Ensure that the user has read the notice
 # NOTE: We can't use snapctl to read the flag because it can only be set by the snap itself when it is run as the superuser.
 marker_file="${SNAP_USER_COMMON}/.snap.unofficial-notice-shown"
@@ -45,7 +47,7 @@ if test ! -f "${marker_file}"; then
         1>&2
     sleep 10
     touch "${marker_file}"
-    printf '\n--------------------------------\n\n' 1>&2
+    flag_output_separation_required=true
 fi
 
 vt_config_file_native="${SNAP_REAL_HOME}/.vt.toml"
@@ -63,6 +65,11 @@ if test -e "${vt_config_file_native}" \
             1>&2
         exit 2
     fi
+    flag_output_separation_required=true
+fi
+
+if "${flag_output_separation_required}"; then
+    printf '\n--------------------------------\n\n' 1>&2
 fi
 
 # Run the next program in the command chain
