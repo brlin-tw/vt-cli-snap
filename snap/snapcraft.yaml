@@ -28,6 +28,12 @@ description: |
   sudo snap alias vt-cli.vt vt
   ```
 
+  To scan files under storage mounted under the `/media`, `/run/media`, and the `/mnt` directories, you need to connect the snap to the `removable-media` snapd security confinement interface by running the following command in a text terminal:
+
+  ```
+  sudo snap connect vt-cli:removable-media
+  ```
+
 license: Apache-2.0
 source-code: &snap-project-url
   - https://gitlab.com/brlin/vt-cli-snap
