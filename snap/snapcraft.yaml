@@ -22,10 +22,9 @@ description: |
 
   https://gitlab.com/brlin/vt-cli-snap/-/issues
 license: Apache-2.0
-source-code:
+source-code: &snap-project-url
   - https://gitlab.com/brlin/vt-cli-snap
-website:
-  - https://gitlab.com/brlin/vt-cli-snap
+website: *snap-project-url
 issues: &snap-issue-tracker-url
   - https://gitlab.com/brlin/vt-cli-snap/-/issues
 contact: *snap-issue-tracker-url
