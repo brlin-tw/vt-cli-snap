@@ -24,15 +24,11 @@ description: |
 
   The upstream preferred `vt` command is not currently set up by default, you may need to set it up manually by running the following command in a text terminal:
 
-  ```
-  sudo snap alias vt-cli.vt vt
-  ```
+      sudo snap alias vt-cli.vt vt
 
   To scan files under storage mounted under the `/media`, `/run/media`, and the `/mnt` directories, you need to connect the snap to the `removable-media` snapd security confinement interface by running the following command in a text terminal:
 
-  ```
-  sudo snap connect vt-cli:removable-media
-  ```
+      sudo snap connect vt-cli:removable-media
 
 license: Apache-2.0
 source-code: &snap-project-url
