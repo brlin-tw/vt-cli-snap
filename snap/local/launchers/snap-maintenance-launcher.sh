@@ -68,7 +68,8 @@ fi
 
 vt_config_file_native="${SNAP_REAL_HOME}/.vt.toml"
 vt_config_file_snap="${SNAP_USER_DATA}/.vt.toml"
-if test -e "${vt_config_file_native}" \
+if snapctl is-connected personal-files 2>/dev/null \
+    && test -e "${vt_config_file_native}" \
     && ! test -e "${vt_config_file_snap}"; then
     printf \
         "%s: INFO: Migrating the native configuration file to the snap's data directory...\\n" \
