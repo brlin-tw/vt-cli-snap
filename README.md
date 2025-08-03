@@ -13,6 +13,17 @@ The following materials are referenced during the development of this project:
 
 * [VirusTotal/vt-cli: VirusTotal Command Line Interface](https://github.com/VirusTotal/vt-cli)  
   The project of the packaged software.
+* [Craft a Go app - Snapcraft documentation](https://documentation.ubuntu.com/snapcraft/stable/how-to/integrations/craft-a-go-app/)  
+  For general information about how to package a Go application to snap format.
+* [YAML anchors | Bitbucket Cloud | Atlassian Support](https://support.atlassian.com/bitbucket-cloud/docs/yaml-anchors/)  
+  Explains how to use YAML anchors to avoid repeating the same content in the `snapcraft.yaml` file.
+* [snapcraft.yaml - Snapcraft documentation](https://documentation.ubuntu.com/snapcraft/stable/reference/project-file/snapcraft-yaml/)  
+  For the documentation of the top-level fields in the `snapcraft.yaml` file.
+* [The personal-files interface - doc - snapcraft.io](https://forum.snapcraft.io/t/the-personal-files-interface/9357)  
+  For the documentation of the `personal-files` snapd security confinement interface, which is used to import the native configuration file to the snap's data directory.
+* [Permission requests | Snapcraft documentation](https://snapcraft.io/docs/permission-requests)  
+  [Process for aliases, auto-connections and tracks | Snapcraft documentation](https://snapcraft.io/docs/process-for-aliases-auto-connections-and-tracks)  
+  For general information about how to request special permissions from the Snap Store.
 
 ## Licensing
 
