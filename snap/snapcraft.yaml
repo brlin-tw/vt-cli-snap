@@ -21,6 +21,7 @@ description: |
   This is NOT an official distribution of the VirusTotal CLI, refer to the snap's own issue tracker for support:
 
   https://gitlab.com/brlin/vt-cli-snap/-/issues
+license: Apache-2.0
 base: core24
 adopt-info: vt-cli
 grade: stable
