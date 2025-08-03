@@ -13,6 +13,13 @@ if ! test -v SNAP_REAL_HOME; then
     exit 1
 fi
 
+if ! script_name="$(basename "${0}")"; then
+    printf \
+        'Error: Unable to determine the basename of the script.\n' \
+        1>&2
+    exit 2
+fi
+
 # We won't want to show the notice and the long delay when the user hits TAB,
 # which the launcher will get the following arguments:
 #
@@ -28,11 +35,13 @@ fi
 marker_file="${SNAP_USER_COMMON}/.snap.unofficial-notice-shown"
 if test ! -f "${marker_file}"; then
     printf \
-        "This is NOT an official distribution of the VirusTotal CLI, refer to the snap's own issue tracker for support:\\n\\n%s\\n\\n" \
+        "%s: This is NOT an official distribution of the VirusTotal CLI, refer to the snap's own issue tracker for support:\\n\\n%s\\n\\n" \
+        "${script_name}" \
         https://gitlab.com/brlin/vt-cli-snap/-/issues \
         1>&2
     printf \
-        'NOTE: This message will only be shown once, the application will be launched in 10 seconds.\n' \
+        '%s: NOTE: This message will only be shown once, the application will be launched in 10 seconds.\n' \
+        "${script_name}" \
         1>&2
     sleep 10
     touch "${marker_file}"
@@ -44,11 +53,13 @@ vt_config_file_snap="${SNAP_USER_DATA}/.vt.toml"
 if test -e "${vt_config_file_native}" \
     && ! test -e "${vt_config_file_snap}"; then
     printf \
-        "INFO: Migrating the native configuration file to the snap's data directory...\\n" \
+        "%s: INFO: Migrating the native configuration file to the snap's data directory...\\n" \
+        "${script_name}" \
         1>&2
     if ! cp -av "${vt_config_file_native}" "${vt_config_file_snap}"; then
         printf \
-            "Error: Unable to migrate the native configuration file to the snap's data directory.\\n" \
+            "%s: Error: Unable to migrate the native configuration file to the snap's data directory.\\n" \
+            "${script_name}" \
             1>&2
         exit 2
     fi
