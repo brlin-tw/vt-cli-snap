@@ -22,6 +22,8 @@ description: |
 
   https://gitlab.com/brlin/vt-cli-snap/-/issues
 license: Apache-2.0
+source-code:
+  - https://gitlab.com/brlin/vt-cli-snap
 base: core24
 adopt-info: vt-cli
 grade: stable
