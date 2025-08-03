@@ -26,8 +26,9 @@ source-code:
   - https://gitlab.com/brlin/vt-cli-snap
 website:
   - https://gitlab.com/brlin/vt-cli-snap
-issues:
+issues: &snap-issue-tracker-url
   - https://gitlab.com/brlin/vt-cli-snap/-/issues
+contact: *snap-issue-tracker-url
 base: core24
 adopt-info: vt-cli
 grade: stable
