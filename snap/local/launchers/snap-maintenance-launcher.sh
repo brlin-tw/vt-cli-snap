@@ -14,7 +14,7 @@ set -eu
 if ! test "${#}" -ge 2 && test "${2}" == /usr/lib/snapd/etelpmoc.sh; then
     # Ensure that the user has read the notice
     # NOTE: We can't use snapctl to read the flag because it can only be set by the snap itself when it is run as the superuser.
-    marker_file="${SNAP_USER_COMMON}/unofficial-notice-shown"
+    marker_file="${SNAP_USER_COMMON}/.snap.unofficial-notice-shown"
     if test ! -f "${marker_file}"; then
         printf \
             "This is NOT an official distribution of the VirusTotal CLI, refer to the snap's own issue tracker for support:\\n\\n%s\\n\\n" \
