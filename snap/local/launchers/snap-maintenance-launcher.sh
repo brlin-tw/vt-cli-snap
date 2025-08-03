@@ -11,7 +11,10 @@ set -eu
 #
 # $1: /bin/bash
 # $2: /usr/lib/snapd/etelpmoc.sh
-if ! test "${#}" -ge 2 && test "${2}" == /usr/lib/snapd/etelpmoc.sh; then
+if ! {
+    test "${#}" -ge 2 \
+        && test "${2}" == /usr/lib/snapd/etelpmoc.sh
+    }; then
     # Ensure that the user has read the notice
     # NOTE: We can't use snapctl to read the flag because it can only be set by the snap itself when it is run as the superuser.
     marker_file="${SNAP_USER_COMMON}/.snap.unofficial-notice-shown"
