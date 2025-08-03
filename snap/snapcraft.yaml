@@ -29,6 +29,8 @@ confinement: strict
 apps:
   vt-cli: &vt-app-defs
     command: bin/vt
+    command-chain:
+      - bin/snap-maintenance-launcher.sh
     completer: etc/bash_completion.d/vt
     plugs:
       - home
@@ -46,3 +48,9 @@ parts:
       - go/1.24/stable
     override-pull: "${CRAFT_PROJECT_DIR}/snap/local/override-pull.sh"
     override-build: "${CRAFT_PROJECT_DIR}/snap/local/override-build.sh"
+
+  launchers:
+    source: snap/local/launchers
+    plugin: dump
+    organize:
+      '*': bin/
