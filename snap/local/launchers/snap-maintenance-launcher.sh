@@ -34,8 +34,8 @@ flag_output_separation_required=false
 
 # Ensure that the user has read the notice
 # NOTE: We can't use snapctl to read the flag because it can only be set by the snap itself when it is run as the superuser.
-marker_file="${SNAP_USER_COMMON}/.snap.unofficial-notice-shown"
-if test ! -f "${marker_file}"; then
+unofficial_notice_marker_file="${SNAP_USER_COMMON}/.snap.unofficial-notice-shown"
+if test ! -f "${unofficial_notice_marker_file}"; then
     printf \
         "%s: This is NOT an official distribution of the VirusTotal CLI, refer to the snap's own issue tracker for support:\\n\\n%s\\n\\n" \
         "${script_name}" \
@@ -46,7 +46,7 @@ if test ! -f "${marker_file}"; then
         "${script_name}" \
         1>&2
     sleep 10
-    touch "${marker_file}"
+    touch "${unofficial_notice_marker_file}"
     flag_output_separation_required=true
 fi
 
