@@ -21,6 +21,13 @@ description: |
   This is NOT an official distribution of the VirusTotal CLI, refer to the snap's own issue tracker for support:
 
   https://gitlab.com/brlin/vt-cli-snap/-/issues
+
+  The upstream preferred `vt` command is not currently set up by default, you may need to set it up manually by running the following command in a text terminal:
+
+  ```
+  sudo snap alias vt-cli.vt vt
+  ```
+
 license: Apache-2.0
 source-code: &snap-project-url
   - https://gitlab.com/brlin/vt-cli-snap
