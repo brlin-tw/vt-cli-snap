@@ -3,7 +3,7 @@
 # Copyright 2025 林博仁(Buo-ren Lin) <buo.ren.lin@gmail.com>
 # SPDX-License-Identifier: Apache-2.0
 name: vt-cli
-title: VirusTotal CLI
+title: VirusTotal CLI (UNOFFICIAL)
 summary: Do everything you'd normally do using VirusTotal's web page with this tool.
 description: |
   Welcome to the VirusTotal CLI, a tool designed for those who love both VirusTotal and command-line interfaces. With this tool you can do everything you'd normally do using VirusTotal's web page, including:
