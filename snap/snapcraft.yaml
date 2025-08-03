@@ -32,6 +32,13 @@ base: core24
 adopt-info: vt-cli
 grade: stable
 confinement: strict
+platforms:
+  amd64:
+  arm64:
+  armhf:
+  ppc64el:
+  riscv64:
+  s390x:
 
 apps:
   vt-cli: &vt-app-defs
