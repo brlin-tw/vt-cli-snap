@@ -28,6 +28,7 @@ if ! {
             1>&2
         sleep 10
         touch "${marker_file}"
+        printf '\n--------------------------------\n\n' 1>&2
     fi
 fi
 
