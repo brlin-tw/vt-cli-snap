@@ -6,6 +6,13 @@
 
 set -eu
 
+if ! test -v SNAP_REAL_HOME; then
+    printf \
+        'Error: This snap requires the SNAP_REAL_HOME environment variable to be set by snapd.\n' \
+        1>&2
+    exit 1
+fi
+
 # We won't want to show the notice and the long delay when the user hits TAB,
 # which the launcher will get the following arguments:
 #
@@ -29,6 +36,21 @@ if ! {
         sleep 10
         touch "${marker_file}"
         printf '\n--------------------------------\n\n' 1>&2
+
+        vt_config_file_native="${SNAP_REAL_HOME}/.vt.toml"
+        vt_config_file_snap="${SNAP_USER_DATA}/.vt.toml"
+        if test -e "${vt_config_file_native}" \
+            && ! test -e "${vt_config_file_snap}"; then
+            printf \
+                "INFO: Migrating the native configuration file to the snap's data directory...\\n" \
+                1>&2
+            if ! cp -a "${vt_config_file_native}" "${vt_config_file_snap}"; then
+                printf \
+                    "Error: Unable to migrate the native configuration file to the snap's data directory.\\n" \
+                    1>&2
+                exit 2
+            fi
+        fi
     fi
 fi
 
