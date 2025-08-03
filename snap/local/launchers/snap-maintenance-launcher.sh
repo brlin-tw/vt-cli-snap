@@ -50,6 +50,22 @@ if test ! -f "${unofficial_notice_marker_file}"; then
     flag_output_separation_required=true
 fi
 
+# Ensure that the user know the existence of the removable-media interface
+removable_media_interface_warning_disable_marker_file="${SNAP_USER_COMMON}/.snap.disable-removable-media-interface-warning"
+if ! snapctl is-connected removable-media \
+    && ! test -f "${removable_media_interface_warning_disable_marker_file}"; then
+    printf \
+        "%s: Warning: To allow the application to access files under storage mounted under the /media, /run/media, and the /mnt directories, you need to connect the snap to the \`removable-media\` snapd security confinement interface by running the following command in a text terminal:\\n\\n    sudo snap connect vt-cli:removable-media\\n\\n" \
+        "${script_name}" \
+        1>&2
+    printf \
+        '%s: NOTE: To disable this warning, you can run the following command in a text terminal:\n\n    touch "%s"\n' \
+        "${script_name}" \
+        "${removable_media_interface_warning_disable_marker_file}" \
+        1>&2
+    flag_output_separation_required=true
+fi
+
 vt_config_file_native="${SNAP_REAL_HOME}/.vt.toml"
 vt_config_file_snap="${SNAP_USER_DATA}/.vt.toml"
 if test -e "${vt_config_file_native}" \

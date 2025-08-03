@@ -24,6 +24,8 @@ The following materials are referenced during the development of this project:
 * [Permission requests | Snapcraft documentation](https://snapcraft.io/docs/permission-requests)  
   [Process for aliases, auto-connections and tracks | Snapcraft documentation](https://snapcraft.io/docs/process-for-aliases-auto-connections-and-tracks)  
   For general information about how to request special permissions from the Snap Store.
+* [The removable-media interface | Snapcraft documentation](https://snapcraft.io/docs/removable-media-interface)  
+  Explains the scope of the `removable-media` snapd security confinement interface.
 
 ## Licensing
 
