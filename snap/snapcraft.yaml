@@ -49,13 +49,11 @@ platforms:
   riscv64:
   s390x:
 
-# TODO: Enable this configuration when the store declaration is ready
-# https://forum.snapcraft.io/t/interface-auto-connection-request-for-the-vt-cli-snap-personal-files-dot-vt-toml/48018/1
-#plugs:
-#  dot-vt-toml:
-#    interface: personal-files
-#    read:
-#      - $HOME/.vt.toml
+plugs:
+  dot-vt-toml:
+    interface: personal-files
+    read:
+      - $HOME/.vt.toml
 
 apps:
   vt-cli: &vt-app-defs
