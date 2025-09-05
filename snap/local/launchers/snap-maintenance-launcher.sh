@@ -50,6 +50,16 @@ if test ! -f "${unofficial_notice_marker_file}"; then
     flag_output_separation_required=true
 fi
 
+command="${1}"
+base_command="${command##*/}"
+if test "${base_command}" == vt-cli; then
+    printf \
+        "%s: Info: The upstream preferred \`vt\` command is not available by default, you can set it up manually by running the following command in a text terminal:\\n\\n    sudo snap alias vt-cli.vt vt\\n\\n" \
+        "${script_name}" \
+        1>&2
+    flag_output_separation_required=true
+fi
+
 # Ensure that the user know the existence of the removable-media interface
 removable_media_interface_warning_disable_marker_file="${SNAP_USER_COMMON}/.snap.disable-removable-media-interface-warning"
 if ! snapctl is-connected removable-media \

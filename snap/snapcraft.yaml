@@ -22,7 +22,7 @@ description: |
 
   https://gitlab.com/brlin/vt-cli-snap/-/issues
 
-  The upstream preferred `vt` command is not currently set up by default, you may need to set it up manually by running the following command in a text terminal:
+  The upstream preferred `vt` command is not available by default, you can set it up manually by running the following command in a text terminal:
 
       sudo snap alias vt-cli.vt vt
 
@@ -56,17 +56,22 @@ plugs:
       - $HOME/.vt.toml
 
 apps:
-  vt-cli: &vt-app-defs
-    command: bin/vt
+  vt-cli:
+    command: bin/vt-cli
     command-chain:
       - bin/snap-maintenance-launcher.sh
     completer: etc/bash_completion.d/vt
-    plugs:
+    plugs: &vt-app-plugs
       - home
       - removable-media
       - network
 
-  vt: *vt-app-defs
+  vt:
+    command: bin/vt
+    command-chain:
+      - bin/snap-maintenance-launcher.sh
+    completer: etc/bash_completion.d/vt
+    plugs: *vt-app-plugs
 
 parts:
   vt-cli:
@@ -77,6 +82,7 @@ parts:
       - go/1.24/stable
     override-pull: "${CRAFT_PROJECT_DIR}/snap/local/override-pull.sh"
     override-build: "${CRAFT_PROJECT_DIR}/snap/local/override-build.sh"
+    override-prime: "${CRAFT_PROJECT_DIR}/snap/local/override-prime.sh"
 
   launchers:
     source: snap/local/launchers
