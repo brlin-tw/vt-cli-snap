@@ -95,6 +95,11 @@ if snapctl is-connected personal-files 2>/dev/null \
     flag_output_separation_required=true
 fi
 
+cache_directory="${SNAP_USER_DATA}/.cache"
+if ! test -d "${cache_directory}"; then
+    mkdir -p "${cache_directory}"
+fi
+
 if "${flag_output_separation_required}"; then
     printf '\n--------------------------------\n\n' 1>&2
 fi
